@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dentbridge · Tratamientos dentales sin fronteras</title>
+<meta name="description" content="Dentbridge capta y acompaña a pacientes internacionales para clínicas dentales, antes, durante y después del viaje.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&family=Inter:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#91d8f0; --primary-active:#b8e8f7; --primary-pale:#e1f4fa;
+  --ink:#2f3841; --ink-deep:#1f262d; --body:#4b5560; --mute:#8a949c;
+  --canvas:#ffffff; --soft:#e8edf0; --line:#d6dde1;
+  --r-xl:32px; --r-lg:24px; --r-md:16px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--canvas);color:var(--ink);font:400 16px/1.55 Urbanist,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{margin:0;font-weight:500;letter-spacing:-.03em}
+:focus-visible{outline:3px solid var(--primary);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+.hl{background:linear-gradient(transparent 58%,var(--primary) 58%,var(--primary) 92%,transparent 92%);padding:0 .06em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+section{padding:56px 0}
+.sec-title{font-size:clamp(38px,5vw,64px);line-height:1;font-weight:500;margin-bottom:32px}
+.sec-title.long{font-size:clamp(32px,4.2vw,54px);line-height:1.04;max-width:20ch}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:32px}
+.sec-head .sec-title{margin:0}
+.sec-head .lead{margin-top:14px;color:var(--body);font-size:18px;max-width:46ch}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 15px/1 Urbanist,sans-serif;padding:14px 22px;border-radius:999px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .15s,background .15s}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--primary);color:#1f262d}
+.btn-primary:hover{background:var(--primary-active)}
+.btn-light{background:#fff;color:var(--ink);border-color:var(--line)}
+.btn-light:hover{background:var(--primary-pale)}
+.arrow{display:inline-grid;place-items:center;width:22px;height:22px}
+.arrow svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Nav */
+nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(10px)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:Inter,system-ui,sans-serif;font-size:24px;font-weight:400;letter-spacing:-.02em}
+.brand b{font-weight:400;color:var(--primary)}
+.pills{display:flex;gap:6px}
+.pills a{font-size:14px;font-weight:500;text-decoration:none;padding:8px 16px;border:1px solid var(--line);border-radius:999px;transition:background .15s}
+.pills a:hover{background:var(--soft)}
+
+/* Hero */
+.hero-panel{position:relative;overflow:hidden;background:var(--soft);border-radius:var(--r-xl);padding:48px 48px 40px}
+.pill{display:inline-block;background:#fff;color:var(--ink);font-size:14px;font-weight:600;padding:7px 16px;border-radius:999px;margin-bottom:28px;position:relative;z-index:1}
+.hero h1{font-size:clamp(44px,6.6vw,96px);line-height:.95;font-weight:400;letter-spacing:-.045em;max-width:14ch;position:relative;z-index:1}
+.hero-bottom{display:grid;grid-template-columns:1fr minmax(300px,400px);gap:32px;align-items:end;margin-top:48px;position:relative;z-index:1}
+.hero-bottom .lead{max-width:470px;color:var(--body);font-size:18px}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.hero-art{position:absolute;right:-40px;top:20px;width:min(44%,500px);opacity:.5;pointer-events:none}
+.journey{background:#fff;border-radius:var(--r-lg);padding:22px}
+.journey h3{font-size:18px;font-weight:600;letter-spacing:-.02em;margin-bottom:16px}
+.stop{display:flex;gap:14px;align-items:center;padding:10px 0;position:relative}
+.stop+.stop{border-top:1px solid var(--soft)}
+.stop .ic{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--soft)}
+.stop.mid .ic{background:var(--primary)}
+.stop svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.stop.mid svg{stroke:#1f262d}
+.stop strong{display:block;font-size:15px;font-weight:600}
+.stop .txt span{font-size:13px;color:var(--body);line-height:1.3;display:block}
+
+/* Quiénes somos */
+.about{display:grid;grid-template-columns:1.15fr 1fr;gap:16px}
+.letter-panel{position:relative;overflow:hidden;border-radius:var(--r-lg);background:var(--soft);padding:36px;display:flex;flex-direction:column;justify-content:flex-end;min-height:460px}
+.letter-panel .bigicon{position:absolute;top:28px;right:28px;width:50%;opacity:.9}
+.letter-panel p{font-size:18px;line-height:1.6;color:var(--body);max-width:52ch;position:relative}
+.letter-panel p+p{margin-top:14px}
+.letter-panel .sign{color:var(--ink);font-weight:600;margin-top:20px}
+.values{display:grid;grid-template-rows:repeat(3,1fr);gap:16px}
+.mini{border:1px solid var(--line);border-radius:var(--r-lg);padding:24px;display:flex;justify-content:space-between;gap:20px;background:#fff}
+.mini:first-child{background:var(--primary-pale);border-color:transparent}
+.mini .ico{flex:none;width:44px;height:44px;border-radius:50%;background:var(--soft);display:grid;place-items:center}
+.mini:first-child .ico{background:#fff}
+.mini .ico svg{width:22px;height:22px;stroke:var(--ink);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.mini h3{font-size:24px;line-height:1.15;margin-bottom:6px}
+.mini p{font-size:15px;color:var(--body);line-height:1.45}
+
+/* Servicios */
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.svc .card{position:relative;overflow:hidden;min-height:320px;padding:32px;border-radius:var(--r-lg);background:var(--soft)}
+.svc .card.pale{background:var(--primary-pale)}
+.svc h3{font-size:28px;line-height:1.1;margin-bottom:10px}
+.svc p{color:var(--body);max-width:38ch}
+.svc ul{list-style:none;padding:0;margin:20px 0 0;font-size:15px;color:var(--body);max-width:32ch;position:relative;z-index:1}
+.svc li{padding-left:16px;position:relative;margin-bottom:8px}
+.svc li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--primary)}
+.svc .art{position:absolute;right:24px;bottom:24px;width:140px;height:140px}
+
+/* Cómo trabajamos */
+.ctrl{display:flex;gap:8px;flex:none}
+.ctrl button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;display:grid;place-items:center}
+.ctrl button:hover{background:var(--primary-pale)}
+.ctrl svg{width:18px;height:18px;stroke:var(--ink);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 48px)/4);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+.track::-webkit-scrollbar{display:none}
+.step{scroll-snap-align:start;background:var(--soft);border-radius:var(--r-lg);padding:24px;min-height:360px;display:flex;flex-direction:column;justify-content:space-between}
+.step:first-child{background:var(--primary-pale)}
+.step .n{font-size:96px;font-weight:300;letter-spacing:-.06em;line-height:.9;color:#c3ccd2}
+.step:first-child .n{color:var(--ink)}
+.step h3{font-size:24px;line-height:1.1;margin-bottom:8px}
+.step p{font-size:15px;color:var(--body)}
+
+/* Beneficios */
+.bens{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.ben{border:1px solid var(--line);border-radius:var(--r-lg);padding:24px;display:flex;flex-direction:column;gap:48px;justify-content:space-between}
+.ben:nth-child(1),.ben:nth-child(4){background:var(--primary-pale);border-color:transparent}
+.ben .dot{width:12px;height:12px;border-radius:50%;background:var(--primary)}
+.ben:nth-child(1) .dot,.ben:nth-child(4) .dot{background:var(--ink)}
+.ben h3{font-size:22px;line-height:1.15;margin-bottom:8px}
+.ben p{font-size:15px;color:var(--body)}
+
+/* Contacto */
+.contact{display:grid;grid-template-columns:1fr 1.1fr;gap:16px;align-items:stretch}
+.contact-left{padding:16px 0}
+.contact h2{font-size:clamp(40px,5.4vw,70px);line-height:.98;font-weight:500;letter-spacing:-.04em;max-width:13ch}
+.contact .lead{color:var(--body);font-size:18px;margin:20px 0 28px;max-width:44ch}
+form{display:grid;gap:14px;max-width:470px}
+.field{display:grid;gap:6px;font-size:14px;font-weight:600}
+.field input,.field textarea{width:100%;font:500 15px/1.4 Urbanist,sans-serif;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:999px;padding:15px 22px}
+.field textarea{border-radius:var(--r-lg);min-height:110px;resize:vertical}
+.field input:focus,.field textarea:focus{border-color:var(--primary);outline:none;box-shadow:0 0 0 3px var(--primary-pale)}
+.field textarea::placeholder{color:var(--mute)}
+.chat .bubble{display:flex;gap:10px;align-items:flex-end;margin:4px 0 4px}
+.chat .av{flex:none;width:34px;height:34px;border-radius:50%;background:var(--soft);display:grid;place-items:center}
+.chat .av svg{width:16px;height:21px}
+.chat .bubble p{background:var(--primary-pale);color:var(--ink);font-weight:500;font-size:15px;line-height:1.45;padding:12px 16px;border-radius:18px 18px 18px 4px;max-width:40ch}
+.chat textarea{border-radius:18px 18px 4px 18px}
+form .btn{justify-self:start;margin-top:4px}
+.ok{display:none;background:var(--primary-pale);border-radius:var(--r-md);padding:12px 16px;font-size:14px;font-weight:600}
+.mail-panel{position:relative;background:var(--soft);border-radius:var(--r-xl);padding:32px;overflow:hidden;min-height:520px;display:flex;flex-direction:column;justify-content:flex-end}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:44px 44px;opacity:.8}
+.mail-panel .bigtooth{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:min(42%,220px)}
+.mail-card{position:relative;align-self:flex-start;display:flex;gap:14px;align-items:center;background:#fff;border-radius:var(--r-md);padding:14px 20px 14px 14px;text-decoration:none;font-weight:600;transition:background .15s}
+.mail-card:hover{background:var(--primary-pale)}
+.mail-card .ic{flex:none;width:40px;height:40px;border-radius:50%;background:var(--primary);display:grid;place-items:center}
+.mail-card svg{width:20px;height:20px;stroke:#1f262d;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* Franja */
+.marquee{background:var(--ink-deep);color:#e8edf0;border-radius:var(--r-lg);overflow:hidden;padding:22px 0;margin-top:16px}
+.marquee .run{display:flex;width:max-content;animation:run 30s linear infinite}
+.marquee span{font-size:clamp(26px,3.4vw,44px);font-weight:500;letter-spacing:-.03em;white-space:nowrap;padding-right:28px}
+.marquee .star{color:var(--primary)}
+@keyframes run{to{transform:translateX(-50%)}}
+
+/* Footer */
+footer{padding:48px 0 0;overflow:hidden}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:32px;padding-bottom:28px;border-bottom:1px solid var(--line)}
+.foot ul{list-style:none;margin:0;padding:0;font-size:14px;display:flex;flex-wrap:wrap;gap:8px}
+.foot ul a{text-decoration:none;display:inline-block;padding:7px 14px;border:1px solid var(--line);border-radius:999px}
+.foot ul a:hover{background:var(--soft)}
+.legal{display:flex;justify-content:space-between;gap:16px;font-size:14px;color:var(--body);padding:18px 0}
+.giant{font-family:Inter,system-ui,sans-serif;font-size:clamp(64px,17vw,260px);line-height:.8;font-weight:400;letter-spacing:-.06em;text-align:center;margin:12px 0 -.08em;white-space:nowrap;color:var(--ink)}
+.giant span{color:var(--primary)}
+
+/* Responsive */
+@media (max-width:1023px){
+  .pills{display:none}
+  .track{grid-auto-columns:calc((100% - 16px)/2)}
+  .bens{grid-template-columns:repeat(2,1fr)}
+  .hero-bottom{grid-template-columns:1fr}
+}
+@media (max-width:767px){
+  .wrap{padding:0 16px}
+  section{padding:40px 0}
+  .hero-panel{padding:32px 20px 20px}
+  .hero-art{width:80%;top:auto;bottom:-30px;right:-60px;opacity:.2}
+  .about,.svc,.contact{grid-template-columns:1fr}
+  .values{grid-template-rows:none}
+  .letter-panel{padding:24px;min-height:0}
+  .letter-panel .bigicon{position:relative;top:0;right:0;width:70%;margin:0 auto 20px;display:block}
+  .sec-head{flex-direction:column;align-items:flex-start}
+  .track{grid-auto-columns:85%}
+  .bens{grid-template-columns:1fr}
+  .svc .art{width:90px;height:90px;opacity:.5}
+  .mail-panel{padding:20px;min-height:300px}
+  .legal{flex-direction:column}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.marquee .run{animation:none}.btn{transition:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Dentbridge, inicio"><svg width="26" height="34" viewBox="0 0 100 130" aria-hidden="true"><path d="M0 14C0 -3 22 -3 50 8C78 -3 100 -3 100 14C100 50 92 70 86 100V1303414V100C8 70 0 50 0 14Z" fill="#4b5560"/><circle cx="50" cy="40" r="12" fill="#91d8f0"/><path d="M33 130V102A16.5 16.5 0 0 1 66 102V130Z" fill="#91d8f0"/></svg><span>dent<b>bridge</b></span></a>
+    <div class="pills">
+      <a href="#quienes-somos">Quiénes somos</a>
+      <a href="#que-hacemos">Qué hacemos</a>
+      <a href="#como-trabajamos">Cómo trabajamos</a>
+      <a href="#clinicas">Para clínicas</a>
+    </div>
+    <a class="btn btn-primary" href="#contacto">Contactar</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-panel">
+      <svg class="hero-art" viewBox="0 0 400 400" aria-hidden="true" fill="none" stroke="#2f3841" stroke-width="1.2">
+        <path d="M110 120c0-40 50-40 90-18 40-22 90-22 90 18 0 80-18 120-30 180-6 30-34 30-40 0l-10-50c-4-18-16-18-20 0l-10 50c-6 30-34 30-40 0-12-60-30-100-30-180z"/>
+        <path d="M150 128c20-10 34-6 50 4" stroke="#91d8f0" stroke-width="2"/>
+        <circle cx="200" cy="200" r="180" stroke-dasharray="3 8"/>
+        <path d="M40 330c80-50 240-50 320 0" stroke-dasharray="3 8"/>
+      </svg>
+
+      <span class="pill">Agencia de turismo dental</span>
+      <h1>Pacientes internacionales para tu clínica, <span class="hl">acompañados de principio a fin.</span></h1>
+
+      <div class="hero-bottom">
+        <div>
+          <p class="lead">Dentbridge capta a pacientes que buscan tratamiento dental en el extranjero y los acompaña antes, durante y después del viaje. Tu clínica recibe pacientes informados y listos para tratarse.</p>
+          <div class="row">
+            <a class="btn btn-primary" href="#contacto">Hablemos <span class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+            <a class="btn btn-light" href="#como-trabajamos">Ver cómo trabajamos</a>
+          </div>
+        </div>
+
+        <aside class="journey" aria-label="El recorrido del paciente">
+          <h3>El recorrido del paciente</h3>
+          <div class="stop"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span><div class="txt"><strong>Su país</strong><span>Consulta inicial, plan de tratamiento y presupuesto.</span></div></div>
+          <div class="stop mid"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 18h18M5 18V9M19 18V9M5 9c0-4 14-4 14 0M12 6v12"/></svg></span><div class="txt"><strong>Dentbridge</strong><span>Viaje, alojamiento, traslados y un único contacto.</span></div></div>
+          <div class="stop"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-7-11a7 7 0 0 1 14 0c0 6.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div class="txt"><strong>Tu clínica</strong><span>Tratamiento, revisión y alta del paciente.</span></div></div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="quienes-somos">
+    <div class="wrap">
+      <h2 class="sec-title">Quiénes somos.</h2>
+      <div class="about">
+        <div class="letter-panel">
+          <svg class="bigicon" viewBox="0 0 300 200" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="60" cy="110" r="44" stroke="#2f3841" stroke-width="1.5"/>
+            <path d="M16 110h88M60 66c18 18 18 70 0 88M60 66c-18 18-18 70 0 88" stroke="#2f3841" stroke-width="1.5"/>
+            <path d="M104 110C150 40 190 40 236 100" stroke="#91d8f0" stroke-width="2.5" stroke-dasharray="4 7"/>
+            <path d="M150 62l14-6-4 14" stroke="#91d8f0" stroke-width="2.5"/>
+            <path d="M216 92c0-18 22-18 40-8 18-10 40-10 40 8 0 36-8 54-14 80-3 14-15 14-18 0l-4-22c-2-8-8-8-10 0l-4 22c-3 14-15 14-18 0-6-26-12-44-12-80z" stroke="#2f3841" stroke-width="1.5" transform="translate(-14 4) scale(.95)"/>
+          </svg>
+          <p>Dentbridge nace para unir dos mundos: clínicas dentales con ganas de crecer y pacientes que buscan un tratamiento de calidad fuera de su país.</p>
+          <p>Sabemos que viajar para tratarse genera dudas. Por eso nos ocupamos de que el paciente llegue informado y se sienta acompañado, y de que tu equipo pueda centrarse en lo que mejor sabe hacer: tratar.</p>
+          <p class="sign">El equipo de Dentbridge</p>
+        </div>
+
+        <div class="values">
+          <div class="mini"><div><h3>Transparencia</h3><p>Presupuestos y planes claros desde el primer contacto.</p></div><span class="ico"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></div>
+          <div class="mini"><div><h3>Trato cercano</h3><p>Hablamos con cada paciente en su idioma y a su ritmo.</p></div><span class="ico"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></div>
+          <div class="mini"><div><h3>Sin promesas vacías</h3><p>Solo comunicamos lo que tu clínica puede ofrecer.</p></div><span class="ico"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="que-hacemos">
+    <div class="wrap">
+      <h2 class="sec-title long">Dos servicios, un mismo objetivo: que el paciente llegue y se sienta cuidado.</h2>
+      <div class="svc">
+        <div class="card pale">
+          <h3>Captación de pacientes</h3>
+          <p>Llegamos a personas que ya están buscando tratarse fuera de su país y las orientamos hacia tu clínica.</p>
+          <ul>
+            <li>Filtramos cada caso antes de enviártelo.</li>
+            <li>Recibes historial, fotos y expectativas del paciente.</li>
+            <li>Hablamos de tus tratamientos con precisión y sin promesas vacías.</li>
+          </ul>
+          <svg class="art" viewBox="0 0 150 150" aria-hidden="true" fill="none" stroke="#2f3841" stroke-width="1.3" stroke-linecap="round">
+            <circle cx="64" cy="64" r="40"/><path d="M93 93l36 36" stroke-width="3"/><circle cx="64" cy="58" r="12" stroke="#4b5560" stroke-width="2"/><path d="M42 90c6-14 38-14 44 0" stroke="#4b5560" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="card pale">
+          <h3>Acompañamiento al cliente</h3>
+          <p>El paciente no está solo en ningún momento del proceso, desde la primera duda hasta la revisión.</p>
+          <ul>
+            <li>Reserva de vuelos, alojamiento y traslados.</li>
+            <li>Coordinación de citas con tu equipo.</li>
+            <li>Seguimiento tras el tratamiento, a distancia.</li>
+          </ul>
+          <svg class="art" viewBox="0 0 150 150" aria-hidden="true" fill="none" stroke="#2f3841" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 90l110-40-30 70-22-26-26 18 6-28z"/><path d="M78 94l52-44" stroke="#4b5560" stroke-width="2"/><path d="M14 130c30-10 60-10 120 0" stroke-dasharray="3 6"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-trabajamos">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2 class="sec-title">Cómo trabajamos con tu clínica.</h2>
+          <p class="lead">Un proceso simple, pensado para que tu equipo dedique su tiempo a tratar.</p>
+        </div>
+        <div class="ctrl">
+          <button type="button" aria-label="Anterior" data-dir="-1"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+          <button type="button" aria-label="Siguiente" data-dir="1"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+      <div class="track" id="track">
+        <article class="step"><span class="n">1</span><div><h3>Nos conocemos</h3><p>Conocemos tu clínica, tus tratamientos, tus tarifas y a tu equipo.</p></div></article>
+        <article class="step"><span class="n">2</span><div><h3>Acordamos condiciones</h3><p>Definimos tarifas, colaboración y cómo nos comunicamos.</p></div></article>
+        <article class="step"><span class="n">3</span><div><h3>Te enviamos casos</h3><p>Pacientes filtrados, con su información clínica y sus expectativas.</p></div></article>
+        <article class="step"><span class="n">4</span><div><h3>Acompañamos hasta el final</h3><p>Nos ocupamos de la logística y del seguimiento del paciente.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="clinicas">
+    <div class="wrap">
+      <h2 class="sec-title">Lo que tu clínica gana.</h2>
+      <div class="bens">
+        <div class="ben"><span class="dot"></span><div><h3>Pacientes informados</h3><p>Llegan sabiendo qué tratamiento necesitan y qué esperar.</p></div></div>
+        <div class="ben"><span class="dot"></span><div><h3>Un solo interlocutor</h3><p>Una persona de contacto para todo lo que rodea al paciente.</p></div></div>
+        <div class="ben"><span class="dot"></span><div><h3>Menos logística</h3><p>Viajes, traslados e idioma los resolvemos nosotros.</p></div></div>
+        <div class="ben"><span class="dot"></span><div><h3>Comunicación clara</h3><p>Información en el idioma del paciente, antes y después.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap">
+      <div class="contact">
+        <div class="contact-left">
+          <h2>Nosotros traemos al paciente. <span class="hl">Tú lo tratas</span></h2>
+          <p class="lead">Cuéntanos qué hace tu clínica y qué tratamientos quieres impulsar. Te respondemos para concretar una primera llamada.</p>
+          <form id="f">
+            <label class="field">Nombre de la clínica<input name="clinica" required autocomplete="organization" maxlength="120"></label>
+            <label class="field">Persona de contacto<input name="nombre" required autocomplete="name" maxlength="120"></label>
+            <label class="field">Correo electrónico<input name="email" type="email" required autocomplete="email" maxlength="200"></label>
+            <div class="field chat">
+              <label for="msg">Mensaje</label>
+              <div class="bubble"><span class="av"><svg viewBox="0 0 100 130" aria-hidden="true"><path d="M0 14C0 -3 22 -3 50 8C78 -3 100 -3 100 14C100 50 92 70 86 100V130H14V100C8 70 0 50 0 14Z" fill="#4b5560"/><circle cx="50" cy="40" r="12" fill="#91d8f0"/><path d="M33 130V102A16.5 16.5 0 0 1 66 102V130Z" fill="#91d8f0"/></svg></span><p>¡Hola! 👋 Nos encantaría conoceros. ¿Qué tratamientos hacéis, en qué ciudad estáis y qué idiomas habla vuestro equipo?</p></div>
+              <textarea id="msg" name="msg" placeholder="Escribe aquí tu respuesta, como si nos lo contaras en persona…" maxlength="2000"></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Enviar mensaje <span class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+            <div class="ok" id="ok" role="status">Se abrirá tu correo con el mensaje listo para enviar.</div>
+          </form>
+        </div>
+
+        <div class="mail-panel">
+          <div class="grid-bg"></div>
+          <svg class="bigtooth" viewBox="0 0 100 130" aria-hidden="true"><path d="M0 14C0 -3 22 -3 50 8C78 -3 100 -3 100 14C100 50 92 70 86 100V130H14V100C8 70 0 50 0 14Z" fill="#4b5560"/><circle cx="50" cy="40" r="12" fill="#91d8f0"/><path d="M33 130V102A16.5 16.5 0 0 1 66 102V130Z" fill="#91d8f0"/></svg>
+          <a class="mail-card" href="mailto:dentbridgeagency@gmail.com"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>dentbridgeagency@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="run">
+          <span>Tratamientos dentales sin fronteras <span class="star">✦</span> Tratamientos dentales sin fronteras <span class="star">✦</span></span>
+          <span>Tratamientos dentales sin fronteras <span class="star">✦</span> Tratamientos dentales sin fronteras <span class="star">✦</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a class="brand" href="#top" aria-label="Dentbridge, inicio"><svg width="22" height="29" viewBox="0 0 100 130" aria-hidden="true"><path d="M0 14C0 -3 22 -3 50 8C78 -3 100 -3 100 14C100 50 92 70 86 100V1302914V100C8 70 0 50 0 14Z" fill="#4b5560"/><circle cx="50" cy="40" r="12" fill="#91d8f0"/><path d="M33 130V102A16.5 16.5 0 0 1 66 102V130Z" fill="#91d8f0"/></svg><span>dent<b>bridge</b></span></a>
+      <ul>
+        <li><a href="#quienes-somos">Quiénes somos</a></li>
+        <li><a href="#que-hacemos">Qué hacemos</a></li>
+        <li><a href="#como-trabajamos">Cómo trabajamos</a></li>
+        <li><a href="#clinicas">Para clínicas</a></li>
+        <li><a href="#contacto">Contactar</a></li>
+      </ul>
+    </div>
+    <div class="legal"><span>Tratamientos dentales sin fronteras</span><span>© 2026 Dentbridge</span></div>
+  </div>
+  <div class="giant" aria-hidden="true">dent<span>bridge</span></div>
+</footer>
+
+<script>
+document.getElementById('f').addEventListener('submit',function(e){
+  e.preventDefault();
+  var d=new FormData(this);
+  var b='Clínica: '+d.get('clinica')+'\nContacto: '+d.get('nombre')+'\nEmail: '+d.get('email')+'\n\n'+d.get('msg');
+  document.getElementById('ok').style.display='block';
+  location.href='mailto:dentbridgeagency@gmail.com?subject='+encodeURIComponent('Contacto clínica: '+d.get('clinica'))+'&body='+encodeURIComponent(b);
+});
+var t=document.getElementById('track');
+document.querySelectorAll('.ctrl button').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var card=t.querySelector('.step');
+    t.scrollBy({left:(card.offsetWidth+16)*Number(btn.dataset.dir),behavior:'smooth'});
+  });
+});
+</script>
+
+<!-- Editor integrado: visible en este archivo; en la versión descargada solo aparece al abrir la web con #editar al final de la dirección -->
+<style>
+#db-bar{position:fixed;right:16px;bottom:16px;z-index:100;display:flex;gap:8px;align-items:center;background:#1f262d;color:#e8edf0;border-radius:999px;padding:8px;box-shadow:0 8px 30px rgba(31,38,45,.25);font:600 14px/1 Urbanist,system-ui,sans-serif}
+#db-bar button{font:inherit;border:0;border-radius:999px;padding:10px 16px;cursor:pointer;background:#2f3841;color:#e8edf0}
+#db-bar button.on{background:#91d8f0;color:#1f262d}
+#db-bar .msg{padding:0 8px;font-weight:500;font-size:13px;opacity:.8;display:none}
+body.editing #db-bar .msg{display:inline}
+body.editing [contenteditable="true"]{outline:1.5px dashed #91d8f0;outline-offset:3px;border-radius:4px;cursor:text}
+body.editing [contenteditable="true"]:hover{background:rgba(145,216,240,.18)}
+body.editing [contenteditable="true"]:focus{outline:2px solid #91d8f0;background:rgba(145,216,240,.12)}
+@media (max-width:767px){#db-bar{left:16px;right:16px;justify-content:center;flex-wrap:wrap;border-radius:20px}}
+</style>
+<script>
+(function(){
+  var root=document.documentElement;
+  if(!(root.dataset.editor==='on'||location.hash==='#editar'))return;
+  var KEY='dentbridge-borrador-v3';
+  var SEL='h1,h2,h3,p,li,.pill,.btn,.mail-card,.marquee .run>span,.legal span,.stop .txt>span,.stop strong,.field>label,.bubble p';
+  var els=[].slice.call(document.querySelectorAll(SEL)).filter(function(el){
+    if(el.closest('#db-bar')||el.closest('form .btn')===el&&false)return false;
+    var p=el.parentElement&&el.parentElement.closest(SEL);
+    return !p;
+  });
+  function load(){try{return JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){return null}}
+  function save(){
+    try{localStorage.setItem(KEY,JSON.stringify(els.map(function(el){return el.innerHTML})));flash('Guardado en este navegador')}
+    catch(e){flash('No se pudo guardar el borrador; descarga la web para no perder cambios')}
+  }
+  var draft=load();
+  if(draft&&draft.length===els.length){els.forEach(function(el,i){el.innerHTML=draft[i]})}
+
+  var bar=document.createElement('div');bar.id='db-bar';
+  bar.innerHTML='<span class="msg" id="db-msg">Pulsa cualquier texto para editarlo</span>'+
+    '<button type="button" id="db-toggle">✎ Editar textos</button>'+
+    '<button type="button" id="db-save">Descargar web</button>'+
+    '<button type="button" id="db-reset" title="Volver a los textos originales">Deshacer todo</button>';
+  document.body.appendChild(bar);
+  var msg=document.getElementById('db-msg'),tgl=document.getElementById('db-toggle'),tm;
+  function flash(s){msg.textContent=s;clearTimeout(tm);tm=setTimeout(function(){msg.textContent='Pulsa cualquier texto para editarlo'},2200)}
+
+  function setEditing(on){
+    document.body.classList.toggle('editing',on);
+    tgl.classList.toggle('on',on);
+    tgl.textContent=on?'✓ Terminar':'✎ Editar textos';
+    els.forEach(function(el){
+      if(on){el.setAttribute('contenteditable','true');el.setAttribute('spellcheck','true')}
+      else{el.removeAttribute('contenteditable');el.removeAttribute('spellcheck')}
+      [].forEach.call(el.querySelectorAll('svg,.arrow,.ic,input,textarea'),function(x){on?x.setAttribute('contenteditable','false'):x.removeAttribute('contenteditable')});
+    });
+  }
+  tgl.onclick=function(){setEditing(!document.body.classList.contains('editing'))};
+  var deb;
+  document.addEventListener('input',function(e){if(e.target.closest&&e.target.closest('[contenteditable="true"]')){clearTimeout(deb);deb=setTimeout(save,500)}});
+  document.addEventListener('click',function(e){
+    if(!document.body.classList.contains('editing')||e.target.closest('#db-bar'))return;
+    if(e.target.closest('a')||e.target.closest('button[type=submit]'))e.preventDefault();
+  },true);
+  document.addEventListener('paste',function(e){
+    if(!document.body.classList.contains('editing'))return;
+    e.preventDefault();document.execCommand('insertText',false,(e.clipboardData||window.clipboardData).getData('text/plain'));
+  });
+
+  document.getElementById('db-save').onclick=function(){
+    var was=document.body.classList.contains('editing');setEditing(false);
+    var c=root.cloneNode(true);
+    var b=c.querySelector('#db-bar');if(b)b.remove();
+    c.removeAttribute('data-editor');
+    var bd=c.querySelector('body');bd.classList.remove('editing');if(!bd.className)bd.removeAttribute('class');
+    var html='<!doctype html>\n'+c.outerHTML;
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([html],{type:'text/html'}));
+    a.download='dentbridge.html';document.body.appendChild(a);a.click();a.remove();
+    setEditing(was);flash('Descargada');
+  };
+  document.getElementById('db-reset').onclick=function(){
+    if(!confirm('¿Volver a los textos originales? Se perderán los cambios no descargados.'))return;
+    try{localStorage.removeItem(KEY)}catch(e){}
+    location.reload();
+  };
+})();
+</script>
+</body>
+</html>
